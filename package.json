@@ -38,7 +38,8 @@
     "!example-projects/parcel"
   ],
   "resolutions": {
-    "karma": "patch:karma@~5.2.3#./scripts/karma-patch/patch.diff"
+    "karma": "patch:karma@~5.2.3#./scripts/karma-patch/patch.diff",
+    "fullcalendar-workspace": "portal:/workspaces/fullcalendar-ics-color/fullcalendar"
   },
   "scripts": {
     "build": "gulp build",
