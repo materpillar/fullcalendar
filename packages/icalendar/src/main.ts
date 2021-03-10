@@ -116,6 +116,8 @@ function parseICalFeed(feedStr: string): ICAL.Event[] {
     try {
       let iCalEvent = new ICAL.Event(component)
 
+      iCalEvent.description = iCalEvent.description != null ? iCalEvent.description : "";
+
       if (iCalEvent.startDate) { // is an accessor method. if throws an error, is a bad event
         iCalEvents.push(iCalEvent)
       }
@@ -150,6 +152,10 @@ function expandICalEvents(iCalEvents: ICAL.Event[], range: DateRange): EventInpu
             start: startDateTime.toString(),
             end: endDateTime.toString(),
             color: iCalEvent.color,
+            extendedProps: {
+              description: iCalEvent.description,
+              location: iCalEvent.location,
+            },
           })
         }
       }
@@ -169,6 +175,10 @@ function buildSingleEvent(iCalEvent: ICAL.Event): EventInput {
     start: iCalEvent.startDate.toString(),
     end: (iCalEvent.endDate ? iCalEvent.endDate.toString() : null),
     color: iCalEvent.color,
+    extendedProps: {
+      description: iCalEvent.description,
+      location: iCalEvent.location,
+    },
   }
 }
 
